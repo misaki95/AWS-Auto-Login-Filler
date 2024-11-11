@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Credentials Manager</title>
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+    <!-- Import Font Awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global style reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        #credentialsSection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #fafafa;
+            font-weight: 500;
+            color: #666;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px 10px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[disabled] {
+            background-color: #f9f9f9;
+            color: #777;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            margin: 2px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn i {
+            margin-right: 6px;
+        }
+
+        .btn-edit {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .editing input,
+        .editing select {
+            background-color: #e6f7ff;
+        }
+
+        #addAccountForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        #addAccountForm label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        #addAccountForm input,
+        #addAccountForm select {
+            margin-bottom: 15px;
+        }
+
+        #addAccount {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 16px;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #saveMessage {
+            color: green;
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>AWS Credentials Manager</h2>
+
+    <!-- Credentials management section -->
+    <div id="credentialsSection">
+        <h3>Existing AWS Credentials</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Account Info</th>
+                    <th>Account ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Container</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="credentialsTable">
+                <!-- Dynamically generated credentials list -->
+            </tbody>
+        </table>
+
+        <div id="addAccountForm">
+            <h3>Add New Account</h3>
+            <label>
+                Account Info (optional):
+                <input type="text" id="newAccountInfo">
+            </label>
+            <label>
+                Account ID:
+                <input type="text" id="newAccountId" required>
+            </label>
+            <label>
+                Username:
+                <input type="text" id="newUsername" required>
+            </label>
+            <label>
+                Password (optional):
+                <input type="password" id="newPassword">
+            </label>
+            <label>
+                Container (optional):
+                <select id="newContainerId">
+                    <!-- Dynamically load container options -->
+                </select>
+            </label>
+            <button id="addAccount" class="btn"><i class="fa fa-plus"></i>Add Account</button>
+            <p id="saveMessage">Saved.</p>
+            <p class="error-message" id="errorMessage"></p>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

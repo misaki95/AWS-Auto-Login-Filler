@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Account Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            min-width: 250px;
+            padding: 15px;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #354A5F;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #masterPasswordSection {
+            /* Initially displayed */
+            display: none;
+            text-align: center;
+        }
+        #accountListSection {
+            /* Initially hidden */
+            display: none;
+        }
+        #accountList {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .account-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .account-item:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+        .account-item:last-child {
+            border-bottom: none;
+        }
+        .account-info {
+            font-weight: bold;
+            color: #333;
+        }
+        .account-details {
+            font-size: 0.9em;
+            color: #666;
+        }
+        #errorMessage {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #masterPasswordInput {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        #submitMasterPassword {
+            padding: 8px 16px;
+        }
+    </style>
+</head>
+<body>
+    <h3>AWS Account Selector</h3>
+
+    <!-- Master password input section -->
+    <div id="masterPasswordSection">
+        <p>Please enter your master password:</p>
+        <input type="password" id="masterPasswordInput" placeholder="Master Password" />
+        <br>
+        <button id="submitMasterPassword">Submit</button>
+        <p id="errorMessage"></p>
+    </div>
+
+    <!-- AWS account list section -->
+    <div id="accountListSection">
+        <div id="accountList">
+            <!-- Dynamically load AWS account list -->
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
