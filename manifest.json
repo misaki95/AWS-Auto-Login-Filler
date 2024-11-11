@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "AWS Auto Login Filler",
+  "version": "0.1",
+  "description": "Securely manage AWS login credentials",
+  
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "notifications",
+    "<all_urls>",
+    "cookies",
+    "contextualIdentities",
+    "webNavigation"
+  ],
+  
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*.signin.aws.amazon.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    "prompt.html"
+  ],
+  
+  "options_page": "options.html",
+
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "AWS Auto Login Filler"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "zhuhongchn@gmail.com"
+    }
+  }
+}
